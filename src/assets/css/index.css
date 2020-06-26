@@ -1,0 +1,201 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    color:rgba(128,128,128,0.7);
+}
+
+.loginpage-container{
+    background-color: white;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 0 5px black;
+    width:430px;
+    top:300px;
+    left:400px;
+}
+
+::-webkit-scrollbar{
+    height:0px;
+    width:0px;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.border-bottom{
+    border-bottom: 0.1px solid rgba(229,229,229);
+}
+
+.input-container{
+    height:30px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+}
+
+.input-container img{
+    width:15px;
+    height:15px;
+    cursor: pointer;
+}
+
+.input-container input{
+    width: 73%;
+    border: none;
+    outline:none;
+    font-size: 15px;
+    color:black;
+}
+
+.input-container:hover{
+    border-bottom: 0.1px solid rgb(18,183,245);
+    transition: all 0.3s;
+}
+
+.up-half{
+    width:430px;
+    height:125px;
+    background-color: aquamarine;
+    position: relative;
+}
+
+.down-half{
+    width:430px;
+    height:205px;
+    display: flex;
+    flex-direction: row;
+}
+
+.down-half-left,.down-half-right{
+    width:23%;  
+    height: 100%;
+    position: relative;
+}
+
+.down-half-left span{
+    position: absolute;
+    bottom: 10px;
+    left:10px;
+    cursor: pointer;
+}
+
+.down-half-right img{
+    width:28px;
+    height:28px;
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right:10px;
+    cursor: pointer;
+}
+
+.login-body{
+    flex: 1;
+    height:73%;
+    margin:35px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fullwidth{
+    width:100%;
+    justify-content: space-between;
+}
+
+
+.button{
+    /* background-color: rgb(5,186,251); */
+    background-color: rgba(10,10,10,0.8);
+    height: 35px;
+    border-radius: 4px;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: 0 0 3px black;
+    cursor:pointer;
+}
+
+.button span{
+    color:white;
+    font-size: 15px;
+}
+
+.top-bar{
+    width:430px;
+    box-sizing: border-box;
+    height:50px;
+    position: absolute;
+    top:0;
+    left:0;
+    padding:10px;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+.top-bar .top-bar-left{
+    width:70px;
+    height:100%;
+}
+
+.top-bar .top-bar-left img{
+    width:30px;
+}
+
+.top-bar .top-bar-left span{
+    color:white;
+    font-size: 18px;
+}
+
+.top-bar .top-bar-right{
+    align-items: flex-start;
+}
+
+.top-bar .top-bar-right img{
+    width:22px;
+    margin:0 0 10px 13px;
+    cursor: pointer;
+}
+
+.top-bar .top-bar-right img:hover{
+    background-color: rgba(255,255,255,0.2);
+    transform: scale(1.2);
+}
+
+.top-bar .top-bar-right img:active{
+    background-color: rgba(255,255,255,0.4);
+}
+
+.header-picture-container {
+    position: absolute;
+    width:430px;
+    bottom: 0;
+}
+
+.header-picture-container img{
+    display: block;
+    width:60px;
+    height:60px;
+    margin: auto;
+    border-radius: 50%;
+    position: relative;
+    top:30px;
+    border: 3px solid rgba(220,229,249,0.8);
+    box-shadow: 0 0 5px rgb(0, 217, 255);
+    z-index: 10;
+}
+
+.up-half-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+}
+
+.up-half-bg img{
+    width:100%;
+    height:125px;
+    z-index: -5;
+}
