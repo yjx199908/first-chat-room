@@ -23,7 +23,6 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile('login.html')
   wins.mainWindow = mainWindow
-  mainWindow.setAlwaysOnTop(true,"modal-panel")
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
@@ -57,6 +56,5 @@ ipcMain.on('user_exit',()=>{
 })
 
 ipcMain.on('user_min',()=>{
-  console.log('最小化')
   wins.mainWindow.minimize()
 })
