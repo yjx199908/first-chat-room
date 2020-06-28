@@ -13,63 +13,68 @@
       <header></header>
       <section>
         <div class="loginpage-container" id="login-block">
-          <div class="up-half">
-            <div class="up-half-bg">
-              <img src="./src/assets/img/icon/login/bgimg.gif"/>
-            </div>
-            <div class="top-bar flex-row">
-              <div class="top-bar-left flex-row">
-                <img src="./src/assets/img/icon/login/logo.png" />
-                <span>OO</span>
+          <div class="obvious_container">
+            <div class="up-half">
+              <div class="up-half-bg">
+                <img src="./src/assets/img/icon/login/bgimg.gif"/>
               </div>
-              <div class="top-bar-right flex-row">
-                <img src="./src/assets/img/icon/login/set.png" />
-                <img src="./src/assets/img/icon/login/min.png" />
-                <img src="./src/assets/img/icon/login/close.png" />
+              <div class="top-bar flex-row">
+                <div class="top-bar-left flex-row">
+                  <img src="./src/assets/img/icon/login/logo.png" />
+                  <span>OO</span>
+                </div>
+                <div class="top-bar-right flex-row">
+                  <img src="./src/assets/img/icon/login/set.png" id="set_button"/>
+                  <img src="./src/assets/img/icon/login/min.png" id="min_button"/>
+                  <img src="./src/assets/img/icon/login/close.png" id="close_button"/>
+                </div>
+                
               </div>
-              
+              <div class="header-picture-container">
+                <img src="./src/assets/img/icon/login/head-default.jpg"/>
+              </div>
             </div>
-            <div class="header-picture-container">
-              <img src="./src/assets/img/icon/login/head-default.jpg"/>
+            <div class="down-half">
+              <div class="down-half-left">
+                <span id="registered_button">注册账号</span>
+              </div>
+              <div class="login-body">
+                <div class="username-container flex-row border-bottom input-container fullwidth">
+                  <img src="./src/assets/img/icon/login/star.png"/>
+                  <input type="text" id="username_input" placeholder="OO号码/手机/邮箱"/>
+                  <img src="./src/assets/img/icon/login/arrow.png" id="account_list_show_button"/>
+                </div>
+                <div class="password-container flex-row border-bottom input-container fullwidth">
+                  <img src="./src/assets/img/icon/login/lock.png"/>
+                  <input type="password" id="password_input" placeholder="密码"/>
+                  <img src="./src/assets/img/icon/login/keyboard.png" id="keyboard_show"/>
+                </div>
+                <div class="otheroption_container flex-row fullwidth">
+                  <div class="autologin flex-row" id="autologin_container">
+                    <input type="checkbox" id="auto_login" name="auto_login"/>
+                    <label for="auto_login">&nbsp;自动登录</label>
+                  </div>
+                  <div class="rememberpassword flex-row" id="rempass_container">
+                    <input type="checkbox" id="rememberpassword"  name="auto_login"/>
+                    <label for="rememberpassword">&nbsp;记住密码</label>
+                  </div>  
+                  <div class="findbackpassword" id="findbackpassword">
+                    <span>找回密码</span>
+                  </div>
+                </div>
+                <div class="loginbutton_container fullwidth">
+                  <div class="button fullwidth" id="login_in_button">
+                    <span>登录</span>
+                  </div>
+                </div>
+              </div>
+              <div class="down-half-right">
+                <img src="./src/assets/img/icon/login/binarycode.png" id="show_binarycode"/>
+              </div>
             </div>
           </div>
-          <div class="down-half">
-            <div class="down-half-left">
-              <span>注册账号</span>
-            </div>
-            <div class="login-body">
-              <div class="username-container flex-row border-bottom input-container fullwidth">
-                <img src="./src/assets/img/icon/login/star.png"/>
-                <input type="text" id="username_input" placeholder="OO号码/手机/邮箱"/>
-                <img src="./src/assets/img/icon/login/arrow.png">
-              </div>
-              <div class="password-container flex-row border-bottom input-container fullwidth">
-                <img src="./src/assets/img/icon/login/lock.png"/>
-                <input type="password" id="password_input" placeholder="密码"/>
-                <img src="./src/assets/img/icon/login/keyboard.png"/>
-              </div>
-              <div class="otheroption_container flex-row fullwidth">
-                <div class="autologin flex-row">
-                  <input type="checkbox" id="auto_login"/>
-                  <span>&nbsp;自动登录</span>
-                </div>
-                <div class="rememberpassword flex-row">
-                  <input type="checkbox" id="rememberpassword"/>
-                  <span>&nbsp;记住密码</span>
-                </div>
-                <div class="findbackpassword">
-                  <span>找回密码</span>
-                </div>
-              </div>
-              <div class="loginbutton_container fullwidth">
-                <div class="button fullwidth">
-                  <span>登录</span>
-                </div>
-              </div>
-            </div>
-            <div class="down-half-right">
-              <img src="./src/assets/img/icon/login/binarycode.png" />
-            </div>
+          <div class="promp_bar" id="promp_bar">
+            <span id="promp_msg"></span>
           </div>
         </div>
       </section>

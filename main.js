@@ -1,5 +1,8 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow,ipcMain, ipcRenderer} = require('electron')
+
+let wins = {}
+
 const path = require('path')
 
 function createWindow () {
@@ -19,7 +22,8 @@ function createWindow () {
   // mainWindow.setIgnoreMouseEvents(true)
   // and load the index.html of the app.
   mainWindow.loadFile('login.html')
-
+  wins.mainWindow = mainWindow
+  mainWindow.setAlwaysOnTop(true,"modal-panel")
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
@@ -46,3 +50,13 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+//程序退出
+ipcMain.on('user_exit',()=>{
+  app.quit()
+})
+
+ipcMain.on('user_min',()=>{
+  console.log('最小化')
+  wins.mainWindow.minimize()
+})

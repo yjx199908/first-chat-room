@@ -6,13 +6,17 @@
 }
 
 .loginpage-container{
-    background-color: white;
-    border-radius: 2px;
     position: relative;
-    box-shadow: 0 0 5px black;
     width:430px;
     top:300px;
     left:400px;
+    height:360px;
+}
+
+.obvious_container{
+    border-radius: 2px;
+    box-shadow: 0 0 5px black;
+    width:430px;
 }
 
 ::-webkit-scrollbar{
@@ -58,7 +62,6 @@
 .up-half{
     width:430px;
     height:125px;
-    background-color: aquamarine;
     position: relative;
 }
 
@@ -67,6 +70,7 @@
     height:205px;
     display: flex;
     flex-direction: row;
+    background-color: white;
 }
 
 .down-half-left,.down-half-right{
@@ -198,4 +202,19 @@
     width:100%;
     height:125px;
     z-index: -5;
+}
+
+.promp_bar{
+    height:30px;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+}
+
+.promp_bar span{
+    color:white;
+    line-height: 30px;
+}
+
+.findbackpassword span{
+    cursor: pointer;
 }
