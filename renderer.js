@@ -117,7 +117,14 @@ buttons.login_in_button.addEventListener('click',function(){
             prompt.cont.backgroundColor = 'transparent'
             prompt.text.innerText = ''
         },3000)
+        return
     }
+
+    ipcRenderer.send('want-to-login',JSON.stringify({account:forms.username_input.value,password:forms.password_input.value}))
+})
+
+ipcRenderer.on('login-result',(event,data)=>{
+    console.log(data)
 })
 
 //展示二维码
@@ -128,6 +135,7 @@ buttons.show_binarycode.addEventListener('click',function(){
 //注册按钮
 buttons.registered_button.addEventListener('click',function(){
     //注册
+    ipcRenderer.send('to-sign-up')
 })
 
 forms.auto_login.addEventListener('click',function(){

@@ -1,21 +1,21 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow,ipcMain, ipcRenderer} = require('electron')
+const { app, BrowserWindow, ipcMain, shell} = require('electron')
 
 let wins = {}
 
 const path = require('path')
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     transparent: true,
-    frame: false, 
+    frame: false,
     width: 430,
     height: 330,
-    fullscreen:true,
+    fullscreen: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration:true
+      nodeIntegration: true
     }
   })
 
@@ -32,7 +32,7 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
-  
+
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -51,10 +51,46 @@ app.on('window-all-closed', function () {
 // code. You can also put them in separate files and require them here.
 
 //程序退出
-ipcMain.on('user_exit',()=>{
+ipcMain.on('user_exit', () => {
   app.quit()
 })
 
-ipcMain.on('user_min',()=>{
+ipcMain.on('user_min', () => {
   wins.mainWindow.minimize()
+})
+
+ipcMain.on('to-sign-up', () => {
+  shell.openExternal('http://localhost:9081/page/signup')
+})
+
+ipcMain.on('want-to-login', (event, data) => {
+  data = JSON.parse(data)
+  var http = require('http');
+  var qs = require('querystring');
+
+  var content = qs.stringify(data);
+  console.log("content:",content)
+
+  var options = {
+    host: 'localhost',
+    port: 9081,
+    path: '/submit/loginin',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',//post请求需要设置的type值
+      'Content-Length': content.length
+    }
+  };
+  var req = http.request(options, function (res) {
+    var _data = '';
+    res.on('data', function (chunk) {
+      _data += chunk;
+    });
+    res.on('end', function () {
+      event.reply('login-result',JSON.parse(_data))
+    });
+  });
+
+  req.write(content);
+  req.end();
 })

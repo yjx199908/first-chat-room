@@ -4,6 +4,8 @@
       <meta charset="utf-8" />
       <title>OO注册</title>
       <link href="./css/index.css" rel="stylesheet" type="text/css">
+      <link href="./assets/img/icon/cat.ico" rel="shortcut icon" type="image/x-icon" />
+      <link rel="bookmark" href="./assets/img/icon/cat.ico">
       <script
         src="https://code.jquery.com/jquery-1.12.4.js"
         integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
@@ -74,15 +76,41 @@
                             <span class="color-third font-size-forth">通过该手机号码可找回密码</span>
                           </div>
                           <div class="submit-button-container">
-                              <div class="submit-button font-size-second cursor-pointer" id="submit-button">立即注册</div>
+                            <div class="submit-button font-size-second cursor-pointer" id="submit-button">立即注册</div>
                           </div>
                       </div>
-                      
+                      <div class="waiting-block origin-hidden">
+                          <div class="waiting-img-container">
+                              <img src="./assets/img/icon/catblue.png"/>
+                          </div>
+                          <div class="waiting-text-container">
+                              <span class="font-size-second color-second">signuping</span>
+                          </div>
+                      </div>
+                      <div class="result-block origin-hidden">
+                          <div class="result-img-container">
+                              <img src="./assets/img/icon/success.png"/>
+                          </div>
+                          <div class="result-text-container font-size-second color-first">
+                              <span>您的账号为:</span><span id="account-result" style="font-weight: 600;"></span><br /><span>请务必牢记!</span>
+                          </div>
+                      </div>
+                      <div class="fail-block origin-hidden">
+                        <div class="fail-img-container">
+                            <img src="./assets/img/icon/fail.png"/>
+                        </div>
+                        <div class="fail-text-container font-size-second color-first">
+                            <span id="fail-msg"></span><br />
+                            <span>please refresh the page and try again</span>
+                        </div>
+                    </div>
                   </div>
               </div>
           </div>
       </section>
-      <footer></footer>
+      <footer>
+          
+      </footer>
     </body>
     <script src="./js/index.js"></script>
   </html>

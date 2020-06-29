@@ -128,7 +128,6 @@ class DealInput{
                 clearTimeout(timer)
             }
             timer = setTimeout(()=>{
-                console.log('进行一次')
                 let verifyResult = Tools.verifyPassword($('#password-input').val())
                 switch(verifyResult){
                     case 0:
@@ -178,6 +177,8 @@ class ControlOther{
     }
 
     static themeIsOrigin = true
+    static submitControlFluxTimer
+    static waitingTimer
 
     static startControl(){
         ControlOther.leftImgLoop()
@@ -198,10 +199,47 @@ class ControlOther{
 
     static loginRequest(){
         $('#submit-button').on('click',()=>{
-            console.log(DealInput.canSignUp())
+            
             if(!DealInput.canSignUp()){
                 return
             }
+            if(ControlOther.submitControlFluxTimer){
+                clearTimeout(ControlOther.submitControlFluxTimer)
+            }
+
+            $('.signup-body-body').slideUp(300)
+            $('.waiting-block').slideDown(300)
+            ControlOther.waitingTimer = setInterval(() => {
+                $('.waiting-text-container span').text($('.waiting-text-container span').text() + '.')
+            }, 500);
+            new Promise((resolve,rejected)=>{
+                ControlOther.submitControlFluxTimer = setTimeout(()=>{
+                    resolve()
+                },1000)
+            }).then(result=>{ 
+                $.post({
+                    url: "http://localhost:9081/submit/signup",
+                    data: {
+                        nickname:$('#username-input').val(),
+                        password:$('#password-input').val(),
+                        phone:$('#phone-input').val()
+                    },
+                    dataType: "json",
+                    success:function (response) {
+                        $('.waiting-block').slideUp(300)
+                        clearInterval(ControlOther.waitingTimer)
+                        if(response.success){
+                            $('#account-result').text(response.account)
+                            $('.result-block').slideDown(300)                          
+                        }
+                        else{
+                            $('#fail-msg').text(response.msg)
+                            $('.fail-block').slideDown(300)     
+                        }
+                    }
+                });
+            })
+           
         })
         
     }
