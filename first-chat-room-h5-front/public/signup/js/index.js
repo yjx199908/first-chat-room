@@ -184,6 +184,7 @@ class ControlOther{
         ControlOther.leftImgLoop()
         ControlOther.loginRequest()
         ControlOther.toggleTheme()
+        ControlOther.toFallback()
     }
 
     static leftImgLoop(){
@@ -284,5 +285,11 @@ class ControlOther{
             }
         })
     }
+
+    static toFallback(){
+        $('#to-fallback').click(function(){
+            window.open('../fallback/index.html')
+        })
+    } 
 }
 

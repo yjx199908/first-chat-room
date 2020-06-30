@@ -65,6 +65,7 @@ ajaxrouter.post('/submit/signup',function(request,response){
 })
 
 ajaxrouter.post('/submit/loginin',function(request,response){
+    console.log('收到请求')
     let sqlstr = `select * from accounts where account = '${request.body.account}' and password='${request.body.password}'`
     operateDb.execquery(sqlstr,(err,data)=>{
         if(err){

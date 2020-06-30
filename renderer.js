@@ -63,8 +63,12 @@ let buttons = {
     findback_password:document.getElementById('findbackpassword'),
     login_in_button:document.getElementById('login_in_button'),
     show_binarycode:document.getElementById('show_binarycode'),
-    registered_button:document.getElementById('registered_button')
+    registered_button:document.getElementById('registered_button'),
+    cancel_login:document.getElementById('login-cancel')
 }
+
+let accountsPre //用来存储所有的保存账号
+
 
 //提示信息块
 let prompt = {
@@ -98,6 +102,7 @@ buttons.account_list_show_button.addEventListener('click',function(){
 //展开软键盘
 buttons.keyboard_show.addEventListener('click',function(){
     //展开软键盘
+    ipcRenderer.send('show-soft-keyboard')
 })
 
 //账号找回按钮
@@ -119,12 +124,14 @@ buttons.login_in_button.addEventListener('click',function(){
         },3000)
         return
     }
+    let auto_login = forms.auto_login.checked
+    let remember_password = forms.remember_password.checked
 
-    ipcRenderer.send('want-to-login',JSON.stringify({account:forms.username_input.value,password:forms.password_input.value}))
-})
+    //登陆动画
+    document.getElementById('logining-show').style.animation = "loginstart 0.3s forwards"
 
-ipcRenderer.on('login-result',(event,data)=>{
-    console.log(data)
+    ipcRenderer.send('want-to-login',JSON.stringify({account:forms.username_input.value,password:forms.password_input.value,auto_login,remember_password}))
+
 })
 
 //展示二维码
@@ -138,6 +145,11 @@ buttons.registered_button.addEventListener('click',function(){
     ipcRenderer.send('to-sign-up')
 })
 
+buttons.cancel_login.addEventListener('click',function () {
+    ipcRenderer.send('cancel-login')
+    document.getElementById('logining-show').style.animation = "logincancel 0.3s forwards"
+})
+
 forms.auto_login.addEventListener('click',function(){
     forms.remember_password.checked = true
 })
@@ -146,4 +158,23 @@ forms.remember_password.addEventListener('click',function(){
     if(!this.checked){
         forms.auto_login.checked = false
     }
+})
+
+ipcRenderer.on('accounts-pre',(event,data)=>{
+    accountsPre = JSON.parse(data)
+    console.log(accountsPre)
+    forms.username_input.value = accountsPre[0].account
+    forms.password_input.value = accountsPre[0].password
+    console.log(accountsPre[0])
+    if(accountsPre[0].remember_password){
+        forms.remember_password.checked = true
+    }
+    if(accountsPre[0].auto_login){
+        forms.auto_login.checked = true
+        buttons.login_in_button.click()
+    }
+})
+
+ipcRenderer.on('login-result',(event,data)=>{
+    console.log(data)
 })
